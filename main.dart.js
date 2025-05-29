@@ -48422,7 +48422,7 @@ A.B3.prototype={
 rp(){var s=0,r=A.P(t.H),q,p=2,o=[],n,m,l,k,j,i,h,g,f,e,d,c,b
 var $async$rp=A.L(function(a,a0){if(a===1){o.push(a0)
 s=p}while(true)switch(s){case 0:p=4
-n=A.aYk("821015937679-vfgi9u8mit7to76o1mf5utp0meqrrrd4.apps.googleusercontent.com",A.b(["email","profile"],t.s))
+n=A.aYk("YOUR_WEB_CLIENT_ID.apps.googleusercontent.com",A.b(["email","profile"],t.s))
 s=7
 return A.S(n.jz(),$async$rp)
 case 7:m=a0
@@ -48512,7 +48512,7 @@ if(b.c!=null)return B.TO
 s=b.b
 if(s==null){r=A.A(a).ax
 q=r.p
-return A.fk(A.cK(A.b([A.aO("Sign in to access your account and save your progress.",i,i,i,A.bL(i,i,q==null?r.k3:q,i,i,i,i,i,h,i,i,20,i,i,B.X,i,i,!0,i,i,i,i,i,i,i,i),i,i,i),B.aLy,A.aSR(B.YG,B.aRc,new A.aes(this.a),A.nk(i,i,A.A(a).ax.b,i,i,i,i,i,i,A.A(a).ax.c,i,i,B.nX,i,new A.bT(A.bu(8),B.o),i,i,i,i,i))],t.p),B.E,B.d5,B.K),i,i)}r=s.a.c.a
+return A.fk(A.cK(A.b([A.aO("Sign in to access your account",i,i,i,A.bL(i,i,q==null?r.k3:q,i,i,i,i,i,h,i,i,20,i,i,B.X,i,i,!0,i,i,i,i,i,i,i,i),i,i,i),B.aLy,A.aSR(B.YG,B.aRc,new A.aes(this.a),A.nk(i,i,A.A(a).ax.b,i,i,i,i,i,i,A.A(a).ax.c,i,i,B.nX,i,new A.bT(A.bu(8),B.o),i,i,i,i,i))],t.p),B.E,B.d5,B.K),i,i)}r=s.a.c.a
 q=r.c
 p=q==null
 o=p?"User":q
