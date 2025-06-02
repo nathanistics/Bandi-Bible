@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="/">
 
   <meta charset="UTF-8">
@@ -31,15 +18,192 @@
 
   <title>bandi_bible</title>
   <link rel="manifest" href="manifest.json">
-
-  <!-- Add these lines for Firebase configuration -->
-  <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth.js"></script>
-  
-  <!-- TODO: Add your Google Sign-in Client ID here -->
-  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID_HERE">
 </head>
 <body>
+  <!-- Load Firebase SDKs as modules -->
+  <script type="module">
+    // Import Firebase modules
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+    import { getAuth } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js';
+
+    // Wait for page load
+    window.addEventListener('load', function () {
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCM4kdKHmTjzy4ilBjecEYCII9chZVgpAE",
+        authDomain: "bandi-bible.firebaseapp.com",
+        projectId: "bandi-bible",
+        storageBucket: "bandi-bible.firebasestorage.app",
+        messagingSenderId: "821015937679",
+        appId: "1:821015937679:web:f26a4dc51d7c305481e6fa"
+      };
+
+      try {
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        console.log('Firebase initialized successfully');
+        
+        // Signal Firebase is ready
+        window.firebaseReady = true;
+        window.dispatchEvent(new Event('firebaseReady'));
+      } catch (error) {
+        console.error('Firebase initialization failed:', error);
+      }
+    });
+  </script>
+
+  <!-- Google Sign-In Implementation -->
+  <script>
+    // Global variables
+    window.googleSignInReady = false;
+    
+    function handleCredentialResponse(response) {
+      console.log('Google Sign-In credential received');
+      window.postMessage({
+        type: 'googleSignIn',
+        idToken: response.credential,
+      }, '*');
+    }
+
+    function initializeGoogleSignIn() {
+      console.log('Initializing Google Sign-In...');
+      
+      if (typeof google === 'undefined' || !google.accounts || !google.accounts.id) {
+        console.error('Google Sign-In library not loaded properly');
+        window.dispatchEvent(new CustomEvent('googleScriptError', { 
+          detail: 'Google Sign-In library not available' 
+        }));
+        return;
+      }
+
+      try {
+        google.accounts.id.initialize({
+          client_id: '821015937679-vfgi9u8mit7to76o1mf5utp0meqrrrd4.apps.googleusercontent.com',
+          callback: handleCredentialResponse,
+          auto_select: false,
+          cancel_on_tap_outside: true,
+          use_fedcm_for_prompt: true // Enable FedCM
+        });
+
+        console.log('Google Sign-In initialized successfully');
+        window.googleSignInReady = true;
+        window.dispatchEvent(new Event('googleScriptLoaded'));
+      } catch (error) {
+        console.error('Google Sign-In initialization error:', error);
+        window.dispatchEvent(new CustomEvent('googleScriptError', { 
+          detail: error.message 
+        }));
+      }
+    }
+
+    // Simple script loading with proper error handling
+    function loadGoogleScript() {
+      const script = document.createElement('script');
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.defer = true;
+      
+      script.onload = function() {
+        console.log('Google Sign-In script loaded');
+        // Add small delay to ensure all Google objects are ready
+        setTimeout(initializeGoogleSignIn, 100);
+      };
+      
+      script.onerror = function() {
+        console.error('Failed to load Google Sign-In script');
+        window.dispatchEvent(new CustomEvent('googleScriptError', { 
+          detail: 'Failed to load Google Sign-In script. Check your internet connection.' 
+        }));
+      };
+      
+      document.head.appendChild(script);
+    }
+
+    // Load the script when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadGoogleScript);
+    } else {
+      loadGoogleScript();
+    }
+
+    // Expose function for Flutter to trigger sign-in
+    window.triggerGoogleSignIn = function() {
+      if (!window.googleSignInReady) {
+        console.error('Google Sign-In not ready');
+        window.postMessage({
+          type: 'googleSignInError',
+          error: 'Google Sign-In not ready'
+        }, '*');
+        return false;
+      }
+      
+      try {
+        google.accounts.id.prompt((notification) => {
+          console.log('Sign-in notification:', notification);
+          
+          // Check various states
+          if (notification.isNotDisplayed && notification.isNotDisplayed()) {
+            console.log('Sign-in prompt not displayed');
+            window.postMessage({
+              type: 'googleSignInError',
+              error: 'Sign-in prompt not displayed. Try clicking the button again.'
+            }, '*');
+          } else if (notification.isSkippedMoment && notification.isSkippedMoment()) {
+            console.log('Sign-in moment skipped');
+            window.postMessage({
+              type: 'googleSignInError',
+              error: 'Sign-in was skipped. Please try again.'
+            }, '*');
+          } else if (notification.isDismissedMoment && notification.isDismissedMoment()) {
+            console.log('Sign-in dismissed by user');
+            window.postMessage({
+              type: 'googleSignInError',
+              error: 'Sign-in was dismissed.'
+            }, '*');
+          }
+        });
+        return true;
+      } catch (error) {
+        console.error('Error triggering Google Sign-In:', error);
+        window.postMessage({
+          type: 'googleSignInError',
+          error: error.message
+        }, '*');
+        return false;
+      }
+    };
+
+    // Alternative manual sign-in method using renderButton
+    window.renderGoogleSignInButton = function(elementId) {
+      if (!window.googleSignInReady) {
+        console.error('Google Sign-In not ready');
+        return false;
+      }
+      
+      try {
+        const element = document.getElementById(elementId);
+        if (!element) {
+          console.error('Element not found:', elementId);
+          return false;
+        }
+        
+        google.accounts.id.renderButton(element, {
+          theme: 'outline',
+          size: 'large',
+          type: 'standard',
+          text: 'signin_with',
+          shape: 'rectangular',
+          logo_alignment: 'left'
+        });
+        return true;
+      } catch (error) {
+        console.error('Error rendering Google Sign-In button:', error);
+        return false;
+      }
+    };
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
