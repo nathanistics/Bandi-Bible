@@ -3,16 +3,18 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "a55887ef03a61298d83d89e18a8d8f2a",
-"assets/AssetManifest.bin.json": "bb62d811e2c97e81454133dedade5974",
-"assets/AssetManifest.json": "f1b5f6d581345d97c77d0fe185afe7b5",
+const RESOURCES = {"assets/AssetManifest.bin": "784d3a24e36373092d3e38ccd23cb1b1",
+"assets/AssetManifest.bin.json": "43fbf8a90947f6bdcafd5bd8cb5389de",
+"assets/AssetManifest.json": "49ae188fcf47c3b6eb889cfa9b74d707",
 "assets/assets/fonts/Croogla4F.ttf": "2d8362f57cf6488ec26b030e13308e51",
 "assets/assets/fonts/NotoSans-Regular.ttf": "f46b08cc90d994b34b647ae24c46d504",
+"assets/assets/images/BandiBibleBlackIcon.png": "2a7184bbcef2fcd29fab92d8f1b743e7",
+"assets/assets/images/BandiBibleWhiteIcon.png": "426a91bf61589c7e90fc4f2f3c729a27",
 "assets/assets/images/Bandi_Bible_Logo_Black.png": "f167949a02716dc6285b262492704223",
 "assets/assets/images/Bandi_Bible_Logo_White.png": "ac81a057ad8ee1cec8a4726e27f71e45",
 "assets/FontManifest.json": "2f7ffcd6425ad4ee7d2824fcee351ef5",
-"assets/fonts/MaterialIcons-Regular.otf": "b77667248b351646c70f46f892c092de",
-"assets/NOTICES": "ba4a46ea508feebc79121639b5cbdcfc",
+"assets/fonts/MaterialIcons-Regular.otf": "4a9e309da2403829b6239efb80a30697",
+"assets/NOTICES": "34b19b28a50b35000f942f9c8db6a1b0",
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
 "canvaskit/canvaskit.js": "728b2d477d9b8c14593d4f9b82b484f3",
 "canvaskit/canvaskit.js.symbols": "27361387bc24144b46a745f1afe92b50",
@@ -25,12 +27,12 @@ const RESOURCES = {"assets/AssetManifest.bin": "a55887ef03a61298d83d89e18a8d8f2a
 "canvaskit/skwasm.wasm": "3395d434b455bf52385113e8b13779ab",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "flutter.js": "83d881c1dbb6d6bcd6b42e274605b69c",
-"flutter_bootstrap.js": "03fc072493315fb0cc93d5e7d25fee78",
+"flutter_bootstrap.js": "747b7c042bfc9c69c7ee887d7753c5de",
 "index.html": "80d0cd74bc684d2007c466bd177184a3",
 "/": "80d0cd74bc684d2007c466bd177184a3",
-"main.dart.js": "782c89706cd12addb4e57a37a1d011c1",
+"main.dart.js": "ec46980b2c3d3db08641cacad66d5da4",
 "manifest.json": "3a8bd7f657778ab31b39b58bb15b4f10",
-"version.json": "2b6306a2d69b920ff709be78c66ffb45"};
+"version.json": "869c3cc18db819b556089ca57667a280"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
