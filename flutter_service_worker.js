@@ -13,7 +13,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "784d3a24e36373092d3e38ccd23cb1b1
 "assets/assets/images/Bandi_Bible_Logo_Black.png": "f167949a02716dc6285b262492704223",
 "assets/assets/images/Bandi_Bible_Logo_White.png": "ac81a057ad8ee1cec8a4726e27f71e45",
 "assets/FontManifest.json": "2f7ffcd6425ad4ee7d2824fcee351ef5",
-"assets/fonts/MaterialIcons-Regular.otf": "b1b56be7b3eeddc010046ddb1eec2576",
+"assets/fonts/MaterialIcons-Regular.otf": "76f8774e34efebd209985814eafc2a1a",
 "assets/NOTICES": "34b19b28a50b35000f942f9c8db6a1b0",
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
 "canvaskit/canvaskit.js": "728b2d477d9b8c14593d4f9b82b484f3",
@@ -27,10 +27,10 @@ const RESOURCES = {"assets/AssetManifest.bin": "784d3a24e36373092d3e38ccd23cb1b1
 "canvaskit/skwasm.wasm": "3395d434b455bf52385113e8b13779ab",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "flutter.js": "83d881c1dbb6d6bcd6b42e274605b69c",
-"flutter_bootstrap.js": "2586549a778f839df99a6cbae2ab5585",
+"flutter_bootstrap.js": "cf65ef317a569f3e8c34765d2b9bf492",
 "index.html": "80d0cd74bc684d2007c466bd177184a3",
 "/": "80d0cd74bc684d2007c466bd177184a3",
-"main.dart.js": "18f5c7480396d899279f194339b9e581",
+"main.dart.js": "c47c3af5997e36887fe5ac19ab9e6fda",
 "manifest.json": "3a8bd7f657778ab31b39b58bb15b4f10",
 "version.json": "869c3cc18db819b556089ca57667a280"};
 // The application shell files that are downloaded before a service worker can
