@@ -1,11 +1,11 @@
 {
-    "name": "bandi_bible",
-    "short_name": "bandi_bible",
+    "name": "Bandi Bible",
+    "short_name": "Bandi Bible",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Bandi Bible, a modern Bible reading app.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
